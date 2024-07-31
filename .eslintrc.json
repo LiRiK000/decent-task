@@ -1,3 +1,67 @@
 {
-  "extends": "next/core-web-vitals"
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": ["react", "jsx-a11y", "import", "react-hooks", "prettier"],
+    "rules": {
+        "prettier/prettier": ["error"],
+        "react/react-in-jsx-scope": "off",
+        "import/no-unresolved": "error",
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index",
+                    "object",
+                    "type"
+                ],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": ["Link"],
+                "specialLink": ["hrefLeft", "hrefRight"],
+                "aspects": ["invalidHref", "preferButton"]
+            }
+        ]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["node_modules/", ".next/", "out/", "public/"]
 }
